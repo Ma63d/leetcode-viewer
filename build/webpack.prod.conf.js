@@ -1,5 +1,5 @@
 var path = require('path')
-var config = require('../config')
+var config = require('../config/index')
 var utils = require('./utils')
 var webpack = require('webpack')
 var merge = require('webpack-merge')

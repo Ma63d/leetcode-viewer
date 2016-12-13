@@ -1,0 +1,179 @@
+@import 'setting.styl'
+@import 'syntax.styl'
+@import 'font.styl'
+//css reset
+body,ul,ol,form
+  margin 0
+a
+  img
+    border 0
+
+img
+  border 0
+
+//custom style
+body
+  font-family $body-font
+  font-size $body-font-size
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  color $medium
+  margin 0
+
+a
+  text-decoration none
+  color $green
+  font-weight 600
+
+:focus
+  outline 0
+
+img
+  border none
+  max-width 100%
+
+h1, h2, h3, h4, strong
+  font-weight 600
+
+span.light
+  color $light
+span.info
+  font-size .85em
+  display inline-block
+  vertical-align middle
+  width 280px
+  margin-left 20px
+
+h1
+  margin 0 0 1em
+h2
+  margin 2em 0 .8em
+  padding-bottom .7em
+  border-bottom 1px solid $border
+h3
+  margin 3em 0 1.2em
+  position relative
+  &:before
+    content "#"
+    color $green
+    position absolute
+    left -0.7em
+    top -2px
+    font-size 1.2em
+    font-weight bold
+figure, p, ul, ol
+  margin 1.2em 0
+p
+  word-spacing 0.05em
+p, ul, ol
+  line-height 1.6em
+ul, ol
+  padding-left 1.5em
+a
+  color $green
+  font-weight 600
+blockquote
+  margin 2em 0
+  padding-left 20px
+  border-left 4px solid $green
+  p
+    font-weight 600
+    margin-left 0
+iframe
+  margin 1em 0
+p.tip
+  padding 12px 24px 12px 30px
+  margin 2em 0
+  border-left 4px solid $red
+  background-color $codebg
+  position relative
+  border-bottom-right-radius $radius
+  border-top-right-radius $radius
+  &:before
+    position absolute
+    top 14px
+    left -12px
+    background-color $red
+    color #fff
+    content "!"
+    width 20px
+    height 20px
+    border-radius 100%
+    text-align center
+    line-height 20px
+    font-weight bold
+    font-family $logo-font
+    font-size 14px
+pre
+  position relative
+  background-color $codebg
+  padding .8em .8em .4em
+  line-height 1.1em
+  border-radius $radius
+  code
+    overflow-x auto
+    display block
+    padding 1.2em 1.4em
+    line-height 1.5em
+    margin 0
+    color #525252
+    border-radius 0
+    white-space pre
+    &.lang-html, &.lang-js, &.lang-bash, &.lang-css
+      &:after
+        position absolute
+        top 0
+        right 0
+        color #ccc
+        text-align right
+        font-size .75em
+        padding 5px 10px 0
+        line-height 15px
+        height 15px
+        font-weight 600
+    &.lang-html:after
+      content 'HTML'
+    &.lang-js:after
+      content 'JS'
+    &.lang-bash:after
+      content 'Shell'
+    &.lang-css:after
+      content 'CSS'
+
+strong
+  color $dark
+
+code, pre
+  font-family $code-font
+  font-size $code-font-size
+  background-color $codebg
+  -webkit-font-smoothing initial
+  -moz-osx-font-smoothing initial
+
+code
+  color #e96900
+  padding 3px 5px
+  margin 0 2px
+  border-radius 2px
+  white-space nowrap
+
+em
+  color $light
+
+.vertical-center
+  &::before
+    content " "
+    display inline-block
+    height 100%
+    width 0
+    vertical-align middle
+
+.vertical-center-content
+  display inline-block
+  vertical-align middle
+
+
+@media screen and (max-width: 720px)
+  body
+    -webkit-text-size-adjust none
+    font-size 14px
