@@ -1,9 +1,26 @@
 <template>
   <div id="viewer">
     <header-nav></header-nav>
-
+    <main class="main">
+      <transition>
+        <keep-alive>
+          <router-view>
+          </router-view>
+        </keep-alive>
+      </transition>
+    </main>
   </div>
 </template>
+<style lang="stylus">
+  @import "./stylus/setting.styl"
+  .main
+    margin-top $herder-total-height
+  .v-enter-active, .v-leave-active
+    transition opacity .3s
+  .v-enter, .v-leave-active
+    opacity 0
+
+</style>
 
 <script>
 import HeaderNav from './components/common/HeaderNav.vue'
