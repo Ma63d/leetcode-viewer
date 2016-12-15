@@ -45,7 +45,7 @@ span.info
   margin-left 20px
 
 h1
-  margin 0 0 1em
+  margin 2em 0 1em
 h2
   margin 2em 0 .8em
   padding-bottom .7em
@@ -119,7 +119,7 @@ pre
     color #525252
     border-radius 0
     white-space pre
-    &.lang-html, &.lang-js, &.lang-bash, &.lang-css
+    &.lang-cpp, &.lang-java, &.lang-c, &.lang-cs, &.lang-js, &.lang-py, &.lang-rb, &.lang-swift, &.lang-go
       &:after
         position absolute
         top 0
@@ -131,14 +131,25 @@ pre
         line-height 15px
         height 15px
         font-weight 600
-    &.lang-html:after
-      content 'HTML'
+    &.lang-cpp:after
+      content 'C++'
+    &.lang-java:after
+      content 'Java'
+    &.lang-c:after
+      content 'C'
+    &.lang-cs:after
+      content 'C#'
     &.lang-js:after
-      content 'JS'
-    &.lang-bash:after
-      content 'Shell'
-    &.lang-css:after
-      content 'CSS'
+      content 'JavaScript'
+    &.lang-py:after
+      content 'Python'
+    &.lang-rb:after
+      content 'Ruby'
+    &.lang-swift:after
+      content 'Swift'
+    &.lang-go:after
+      content 'Go'
+
 
 strong
   color $dark
@@ -179,6 +190,9 @@ em
   clear both
   overflow hidden
   visibility hidden
+
+.tac
+  text-align center
 
 [v-cloak] {
   display: none

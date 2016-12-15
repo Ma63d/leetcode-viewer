@@ -29,10 +29,10 @@
   .green
     color $green
   .cover
-    padding 100px 60px
+    padding 100px 0
     .cover-inner
       margin 0 auto
-      width 800px
+      max-width 800px
       .cover-pic
         float left
         width 350px
@@ -68,22 +68,29 @@
       }
     },
     activated () {
-      if (state.resultJson === undefined) {
+      if (state.solved === undefined) {
         this.fetchData()
-        //if resultJson exits in state, that means we fetched before
       } else {
-        return
+        //if `solved` exits in state, that means we fetched before
+        this.total = state.total
+        this.solved = state.solved
+        this.locked = state.locked
+        this.lastUpdatedTime = state.lastUpdatedTime
       }
     },
     methods: {
       fetchData () {
         this.loading = true
         service.getResultJson().then((data) => {
+          this.total = state.total = data.total
+          this.solved = state.solved = data.solved
+          this.locked = state.locked = data.locked
+          this.lastUpdatedTime = state.lastUpdatedTime = data.lastUpdatedTime
+          delete data.total
+          delete data.solved
+          delete data.locked
+          delete data.lastUpdatedTime
           state.resultJson = data
-          this.total = data.total
-          this.solved = data.solved
-          this.locked = data.locked
-          this.lastUpdatedTime = data.lastUpdatedTime
           this.loading = false
         })
       }

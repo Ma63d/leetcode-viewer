@@ -12,6 +12,9 @@ function checkStatus (response) {
 function parseJSON (response) {
   return response.json()
 }
+function parseText (response) {
+  return response.text()
+}
 
 export default {
   get (url, isJson = true, param = {}, headers = {}, host = process.env.sourcePath) {
@@ -35,6 +38,7 @@ export default {
     } else {
       return window.fetch(url, init)
         .then(checkStatus)
+        .then(parseText)
     }
   }
 }

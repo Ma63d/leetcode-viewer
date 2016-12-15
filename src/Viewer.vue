@@ -1,7 +1,7 @@
 <template>
   <div id="viewer">
     <header-nav></header-nav>
-    <main class="main">
+    <main class="main fix">
       <transition>
         <keep-alive>
           <router-view>
@@ -15,6 +15,8 @@
   @import "./stylus/setting.styl"
   .main
     margin-top $header-total-height
+    padding 0 65px
+
   .v-enter-active, .v-leave-active
     transition opacity .3s
   .v-enter, .v-leave-active

@@ -3,10 +3,13 @@ export default {
   getResultJson () {
     return api.get('result.json')
   },
-  getDbJson (path) {
-    return api.get(path)
+  getDbJson (dirPath) {
+    return api.get(`${dirPath}/db.json`)
   },
-  getQuestionText (path) {
-    return api.get(`${path}/question.md`, false)
+  getQuestionText (dirPath) {
+    return api.get(`${dirPath}/question.md`, false)
+  },
+  getPostText (dirPath) {
+    return api.get(`${dirPath}/post.md`, false)
   }
 }
