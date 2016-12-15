@@ -1,8 +1,9 @@
 <template>
-  <div>
-  </div>
+  <nav class="sidebar">
+
+  </nav>
 </template>
-<style>
+<style lang="stylus">
 
 </style>
 <script>

@@ -14,7 +14,7 @@ function parseJSON (response) {
 }
 
 export default {
-  get (url, param = {}, headers = {}, host = process.env.sourcePath) {
+  get (url, isJson = true, param = {}, headers = {}, host = process.env.sourcePath) {
     headers = new window.Headers(headers)
     var query = []
     Object.keys(param).forEach((item) => {
@@ -28,9 +28,14 @@ export default {
       headers: headers,
       cache: 'default'
     }
-    return window.fetch(url, init)
-      .then(checkStatus)
-      .then(parseJSON)
+    if (isJson) {
+      return window.fetch(url, init)
+        .then(checkStatus)
+        .then(parseJSON)
+    } else {
+      return window.fetch(url, init)
+        .then(checkStatus)
+    }
   }
 }
 

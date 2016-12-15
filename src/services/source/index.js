@@ -5,5 +5,8 @@ export default {
   },
   getDbJson (path) {
     return api.get(path)
+  },
+  getQuestionText (path) {
+    return api.get(`${path}/question.md`, false)
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <section class="cover">
+  <section class="cover" >
     <div class="cover-inner">
       <img class="cover-pic" src="../assets/coding.png">
       <div class="cover-description">
@@ -13,11 +13,12 @@
           : `这个网页呈现了我全部的Leecode解题源码.`}}
           <br>
           {{language === 'en' ? `I've solved` : `我完成了 `}}
-          {{solved}} / {{total}} {{language === 'en' ? `problems` : `道题`}} ({{language === 'zh' ? `有` : ``}} {{locked}} {{language === 'en' ? `problems for a fee` : `题需要付费`}}).
+          <pulse-out-loader style="display: inline-block" v-show="loading"></pulse-out-loader> <span class="green" v-show="!loading">{{solved}}</span> / <span class="green" v-show="!loading">{{total}}</span><pulse-out-loader style="display: inline-block" v-show="loading"></pulse-out-loader>
+          {{language === 'en' ? `problems` : `道题`}} ({{language === 'zh' ? `有` : ``}} {{locked}} {{language === 'en' ? `problems for a fee` : `题需要付费`}}).
           <br>
           {{language === 'en' ? `Click` : ``}} <router-link to="/source">{{language === 'en' ? `here` : `点此`}}</router-link> {{language === 'en' ? `to see every solution` : `查看每一个解题源码`}}.
           <br>
-          <span class="light">Last updated: {{lastUpdatedTime}}</span>
+          <span class="light">Last updated: <pulse-out-loader style="display: inline-block" v-show="loading"></pulse-out-loader> <span class="green" v-show="!loading">{{lastUpdatedTime}}</span></span>
         </div>
       </div>
     </div>
@@ -25,6 +26,8 @@
 </template>
 <style lang="stylus">
   @import "../stylus/setting.styl"
+  .green
+    color $green
   .cover
     padding 100px 60px
     .cover-inner
@@ -46,9 +49,13 @@
         font-size 16px
 </style>
 <script>
+  import PulseOutLoader from './common/PulseOutLoader.vue'
   import state from '../store/state'
   import service from '../services/cover/index'
   export default {
+    components: {
+      PulseOutLoader
+    },
     data () {
       return {
         name: process.env.author === null ? 'My' : `${process.env.author}'s`,
@@ -56,7 +63,8 @@
         total: '',
         solved: '',
         locked: '',
-        lastUpdatedTime: ''
+        lastUpdatedTime: '',
+        loading: false
       }
     },
     activated () {
@@ -69,12 +77,14 @@
     },
     methods: {
       fetchData () {
+        this.loading = true
         service.getResultJson().then((data) => {
           state.resultJson = data
           this.total = data.total
           this.solved = data.solved
           this.locked = data.locked
           this.lastUpdatedTime = data.lastUpdatedTime
+          this.loading = false
         })
       }
     }

@@ -24,7 +24,7 @@
     box-shadow 0 0 4px rgba(0,0,0,0.25)
   .top-nav
     height $header-height
-    padding $herder-padding-ver 100px $herder-padding-ver 60px
+    padding $header-padding-ver 100px $header-padding-ver 60px
   .nav-logo
     display inline-block
     .logo
