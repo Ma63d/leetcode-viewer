@@ -39,6 +39,7 @@
         margin-right 0
         border-radius 10px
       .cover-description-title
+        font-family $logo-font
         font-size 28px
         padding-top 20px
         padding-bottom 15px

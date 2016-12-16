@@ -86,6 +86,7 @@
         }
       },
       fetchContent (id, title) {
+        let pureId = id
         if (id < 10) {
           id = '00' + id
         } else if (id < 100) {
@@ -100,7 +101,7 @@
         Promise.all([service.getQuestionText(`${id}.${title}`), service.getDbJson(`${id}.${title}`)])
         .then(([question, source]) => {
           let titleWithoutDash = title.split('-').join(' ')
-          this.title = titleWithoutDash
+          this.title = `${pureId} . ${titleWithoutDash}`
           this.question = question
           Object.keys(source).forEach((language) => {
             let cssClassOfLang = cssClassOfLangMap[language]

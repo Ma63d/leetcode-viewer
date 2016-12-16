@@ -1,9 +1,9 @@
 <template>
   <article  class="posts">
-    <h1>{{title}}</h1>
-    <div v-html="compiledQuestion" class="question"></div>
-    <div v-html="compiledPost"></div>
-    <div v-html="compiledContent"></div>
+    <h1 v-if="title !== ''">{{title}}</h1>
+    <div v-html="compiledQuestion" class="question" v-if="question !== ''"></div>
+    <div v-html="compiledPost" v-if="post !== ''"></div>
+    <div v-html="compiledContent" v-if="content !== ''"></div>
   </article>
 </template>
 <style lang="stylus">

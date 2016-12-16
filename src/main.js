@@ -28,4 +28,3 @@ new Vue({
   router,
   components: { Viewer }
 }).$mount('viewer')
-

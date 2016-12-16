@@ -14,6 +14,7 @@
     position fixed
     left 0
     top $header-total-height
+    bottom 0
     padding 40px 0 50px 65px
     width 260px
     margin-right 20px
