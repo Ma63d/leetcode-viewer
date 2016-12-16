@@ -1,6 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-var buildConf = require('../build.conf')
+
 module.exports = {
   build: {
     env: require('./prod.env'),
@@ -13,7 +13,7 @@ module.exports = {
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
-    productionGzip: buildConf.gzip,
+    productionGzip: false,
     productionGzipExtensions: ['js', 'css']
   },
   dev: {
