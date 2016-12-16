@@ -13,7 +13,7 @@
 
 [leetcode-spider](https://github.com/Ma63d/leetcode-spider)是我用JS写的leetcode解题源码爬虫, 自动将你的leetcode解题源码爬取下来,生成本地代码、题目文件.并生成本项目运行时所需的部分JSON文件.
 
-** 所以使用前请先爬取你自己的leetcode源码 **
+**所以使用前请先爬取你自己的leetcode源码**
 
 
 ## usage 使用方法
@@ -22,10 +22,10 @@
 # 先clone/fork本项目 然后进入本项目所在文件夹
 
 git clone https://github.com/Ma63d/leetcode-spider.git 
-
 cd leetcode-spider
 
 #安装npm依赖
+
 npm i
 
 # 然后按照lc-spider的使用方法 先爬下来你的leetcode解题源码 详见[leetcode-spider](https://github.com/Ma63d/leetcode-spider)使用介绍
