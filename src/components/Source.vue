@@ -2,22 +2,32 @@
   <div>
     <side-bar :problems="problems"></side-bar>
     <post :content="content" :question="question" :title="title" :post="post"></post>
+    <div class="posts tac loading-container" v-show="content == ''">
+      <pulse-out-loader :height="100" :width="10" :margin="5" style="display: inline-block"></pulse-out-loader>
+    </div>
+    <duo-shuo v-if="enableDuoShuo && duoShuoRunning" :articleId="duoShuoArticleId" :articleTitle="duoShuoArticleTitle" :postId="postId"></duo-shuo>
   </div>
 </template>
-<style>
-
+<style lang="stylus">
+  .loading-container
+    padding-top 200px
 </style>
 <script>
   import state from '../store/state'
   import service from '../services/source/index'
   import Post from './common/Post.vue'
   import SideBar from './common/SideBar.vue'
+  import PulseOutLoader from './common/PulseOutLoader.vue'
+  import DuoShuo from './common/DuoShuo.vue'
+  import getHashCode from '../utils/hash_code'
   import cssClassOfLangMap from '../utils/css_class_lang_map'
 
   export default{
     components: {
       Post,
-      SideBar
+      SideBar,
+      PulseOutLoader,
+      DuoShuo
     },
     data () {
       return {
@@ -25,18 +35,27 @@
         content: '',
         question: '',
         title: '',
-        post: ''
+        post: '',
+        enableDuoShuo: process.env.duoShuoPlugin,
+        duoShuoArticleId: '',
+        postId: '',
+        duoShuoArticleTitle: '',
+        duoShuoRunning: false
       }
     },
     activated () {
       this.fetchData()
     },
+    deactivated () {
+      this.duoShuoRunning = false
+    },
     watch: {
-      // 如果路由有变化，会再次执行该方法
+      // $route change , let's fetch data
       '$route': 'fetchData'
     },
     methods: {
       fetchData () {
+        //fetch only when the path is of current page
         if (/^\/source/.test(this.$route.path)) {
           if (state.resultJson === undefined) {
             service.getResultJson().then((data) => {
@@ -64,6 +83,9 @@
                   }
                 }
               }
+            }).catch(err => {
+              console.error(err)
+              console.error('cannot get result.json! ')
             })
           //if resultJson exits in state, that means we fetched before
           } else {
@@ -86,6 +108,7 @@
         }
       },
       fetchContent (id, title) {
+        this.postId = id + ''
         let pureId = id
         if (id < 10) {
           id = '00' + id
@@ -98,10 +121,14 @@
         this.content = ``
         this.question = ``
         this.post = ``
+        this.duoShuoRunning = true
         Promise.all([service.getQuestionText(`${id}.${title}`), service.getDbJson(`${id}.${title}`)])
         .then(([question, source]) => {
           let titleWithoutDash = title.split('-').join(' ')
           this.title = `${pureId} . ${titleWithoutDash}`
+          this.duoShuoArticleTitle = this.title
+          this.duoShuoArticleId = getHashCode(this.title) + ''
+          this.duoShuoRunning = true
           this.question = question
           Object.keys(source).forEach((language) => {
             let cssClassOfLang = cssClassOfLangMap[language]

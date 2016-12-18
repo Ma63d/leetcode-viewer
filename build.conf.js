@@ -8,5 +8,9 @@ module.exports = {
   // 否则,请保持null
   gitRepo: 'https://github.com/Ma63d/leetcode',
   //网页的语言 zh 中文 en 英文
-  language: 'en'
+  language: 'en',
+  //是否开启多说插件 如果你开启此选项,请确保您已注册多说站点
+  duoShuoPlugin: true,
+  //请填写您自己的多说域名:
+  duoShuoShortName: 'chuckliu'
 }

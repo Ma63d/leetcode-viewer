@@ -1,10 +1,6 @@
 <template>
   <div class="line-scale-pulse-out-rapid" v-cloak>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div :style="{height:height+'px',width:width+'px',margin:margin+'px'}" v-for="n in 5"></div>
   </div>
 </template>
 <style lang="stylus" scoped>
@@ -26,10 +22,7 @@
   .line-scale-pulse-out-rapid
     div
       background-color: $green
-      width: 2px;
-      height: 20px;
       border-radius: 2px;
-      margin: -1px;
       animation-fill-mode: both;
       display: inline-block;
       animation: line-scale-pulse-out-rapid 0.9s 0s infinite cubic-bezier(.11, .49, .38, .78);
@@ -43,5 +36,22 @@
 </style>
 <script>
   export default {
+    props: {
+      // the width of each histogram
+      width: {
+        type: Number,
+        default: 2
+      },
+      // the height of each histogram
+      height: {
+        type: Number,
+        default: 20
+      },
+      // the margin between each histogram
+      margin: {
+        type: Number,
+        default: 1
+      }
+    }
   }
 </script>

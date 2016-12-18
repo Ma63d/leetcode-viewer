@@ -17,9 +17,9 @@
     margin-top $header-total-height
     padding 0 65px
 
-  .v-enter-active, .v-leave-active
-    transition opacity .3s
-  .v-enter, .v-leave-active
+  .v-enter-active
+    transition opacity 1.2s
+  .v-enter
     opacity 0
 
 </style>

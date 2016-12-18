@@ -33,8 +33,6 @@
 
 </style>
 <script>
-  //import state from '../../store/state.js'
-  //import service from '../../services/source/index.js'
   export default {
     props: {
       problems: {
