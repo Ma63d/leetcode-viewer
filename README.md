@@ -9,7 +9,7 @@
 ![](./doc/pic1.png)
 ![](./doc/pic2.png)
 
-如果你使用当中有什么疑问或者有什么需求、改进建议,都可以开issue，发pr.
+如果你在使用当中有什么疑问或者有什么需求、改进建议,都可以开issue,发pr.
 
 ## 本项目需结合[leetcode-spider](https://github.com/Ma63d/leetcode-spider)使用
 
