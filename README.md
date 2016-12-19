@@ -4,10 +4,14 @@
 
 [线上Demo在此](https://ma63d.github.io/leetcode-viewer)
 
+
+
 只需要几行命令就可以立马搭建出一个完整的leetcode解题源码单页应用,完全无需后台,上传至github pages或你自己的服务器,即可一秒完整呈现你的leetcode源码.再结合多说等评论插件,**一个带搜索功能、带评论、带自己的解题心得、带源码、带leetcode题目的leetcode博客就这样搭建起来了，你，一行代码都不用写。**
 
 ![](./doc/pic1.png)
 ![](./doc/pic2.png)
+
+技术上主要基于vue2.0全家桶.
 
 如果你在使用当中有什么疑问或者有什么需求、改进建议,都可以开issue,发pr.
 
@@ -32,6 +36,7 @@ cd leetcode-viewer
 
 ```
 npm i
+npm i lc-spider -g 
 ```
 然后按照lc-spider的使用方法 先爬下来你的leetcode解题源码 详见[leetcode-spider](https://github.com/Ma63d/leetcode-spider)使用介绍
 
