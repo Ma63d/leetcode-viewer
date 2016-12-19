@@ -19,7 +19,7 @@
   .main
     margin-top $header-total-height
     padding 0 65px
-
+    min-height 500px
   .v-enter-active
     transition opacity 1.2s
   .v-enter
