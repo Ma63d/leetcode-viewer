@@ -2,7 +2,7 @@
 
 > 用无后台架构(backend-free)的Vue单页应用来分享、呈现你的leetcode解题源码吧!
 
-[线上Demo在此](https://ma63d.github.io/#/cover)
+[线上Demo在此](https://ma63d.github.io/leetcode-viewer)
 
 只需要几行命令就可以立马搭建出一个完整的leetcode解题源码单页应用,完全无需后台,上传至github pages或你自己的服务器,即可一秒完整呈现你的leetcode源码.再结合多说等评论插件,**一个带搜索功能、带评论、带自己的解题心得、带源码、带leetcode题目的leetcode博客就这样搭建起来了，你，一行代码都不用写。**
 

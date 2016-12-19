@@ -5,7 +5,7 @@
     <div class="posts tac loading-container" v-show="content == ''">
       <pulse-out-loader :height="100" :width="10" :margin="5" style="display: inline-block"></pulse-out-loader>
     </div>
-    <duo-shuo v-if="enableDuoShuo && duoShuoRunning" :articleId="duoShuoArticleId" :articleTitle="duoShuoArticleTitle" :postId="postId"></duo-shuo>
+    <duo-shuo v-if="enableDuoShuo && duoShuoRunning && content != ''" :articleId="duoShuoArticleId" :articleTitle="duoShuoArticleTitle" :postId="postId"></duo-shuo>
   </div>
 </template>
 <style lang="stylus">
