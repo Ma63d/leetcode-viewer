@@ -1,4 +1,3 @@
-/* 封装get，post，delete请求 */
 function checkStatus (response) {
   if (response.status >= 200 && response.status < 300) {
     return response
