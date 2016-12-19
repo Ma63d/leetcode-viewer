@@ -4,10 +4,16 @@
 
 [线上Demo在此](https://ma63d.github.io/leetcode-viewer)
 
-只需要几行命令就可以立马搭建出一个完整的leetcode解题源码单页应用,完全无需后台,上传至github pages或你自己的服务器,即可一秒完整呈现你的leetcode源码.再结合多说等评论插件,**一个带搜索功能、带评论、带自己的解题心得、带源码、带leetcode题目的leetcode博客就这样搭建起来了，你，一行代码都不用写。**
+
+
+只需要几行命令就可以立马搭建出一个完整的leetcode解题源码单页应用,完全无需后台,上传至github pages或你自己的服务器,即可一秒完整呈现你的leetcode源码.
+
+结合多说等评论插件,**一个带搜索功能、带评论、带自己的解题心得、带源码、带leetcode题目的leetcode博客就这样搭建起来了,而你,一行代码都不用写,只需要专注于解题和撰写解题博客。**
 
 ![](./doc/pic1.png)
 ![](./doc/pic2.png)
+
+技术上主要基于vue2.0全家桶.
 
 如果你在使用当中有什么疑问或者有什么需求、改进建议,都可以开issue,发pr.
 
@@ -32,6 +38,7 @@ cd leetcode-viewer
 
 ```
 npm i
+npm i lc-spider -g 
 ```
 然后按照lc-spider的使用方法 先爬下来你的leetcode解题源码 详见[leetcode-spider](https://github.com/Ma63d/leetcode-spider)使用介绍
 
@@ -148,7 +155,7 @@ ok了,当前的网页呈现的是你的最新版代码.
 
 - `npm run build`是用来打包生成前端网页的, 除了[使用方法](https://github.com/Ma63d/leetcode-viewer#usage-使用方法)里所说的进行leetcode-viewer的安装工作的时候用,就**只有**在你更新了[build.conf.js](./build.conf.js)时才需要再次执行该命令,其余时候都不用.
 
-- `npm run generate` 是用来生成网页运行的时候所需的一些JSON信息文件的,因此,如果你爬了新的代码,那么请记得爬好之后运行此命令,(而且再啰嗦一句,记得在leetcode源码目录运行此命令哈),而如果你是[写了新的博客文章](https://github.com/Ma63d/leetcode-viewer#writing-posts-书写文章),则不需要运行此命令,你要做的就是刷新网页
+- `npm run generate` 是用来生成网页运行的时候所需的一些JSON信息文件的,因此,如果你爬了新的代码,那么请记得爬好之后运行此命令,(而且再啰嗦一句,记得在leetcode源码目录运行此命令哈),而如果你是[写了新的博客文章](https://github.com/Ma63d/leetcode-viewer#writing-posts-书写文章),则不需要运行此命令,你要做的就是刷新网页.
 
 
 

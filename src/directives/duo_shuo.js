@@ -1,7 +1,6 @@
 // import _ from "lodash"
 export default {
   inserted (el, binding) {
-    console.log('insert')
     let boundFunc = function () {
       duoShuoInit(el, binding.value, boundFunc)
     }
