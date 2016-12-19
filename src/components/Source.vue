@@ -57,6 +57,15 @@
       fetchData () {
         //fetch only when the path is of current page
         if (/^\/source/.test(this.$route.path)) {
+          // a hack way to solve a problem with duoshuo plugin fixme
+          // when you login duoshuo and then back to current page
+          // it still shows that you did not login
+          // we need to reload this plugin to show the right state of login
+          if (this.enableDuoShuo && this.$route.query.code !== undefined) {
+            // if query contains 'code' that means you've logged
+            this.duoShuoRunning = false
+            this.$router.replace('/source/' + this.$route.params.id)
+          }
           if (state.resultJson === undefined) {
             service.getResultJson().then((data) => {
               state.total = data.total
@@ -121,14 +130,15 @@
         this.content = ``
         this.question = ``
         this.post = ``
-        this.duoShuoRunning = true
         Promise.all([service.getQuestionText(`${id}.${title}`), service.getDbJson(`${id}.${title}`)])
         .then(([question, source]) => {
           let titleWithoutDash = title.split('-').join(' ')
           this.title = `${pureId} . ${titleWithoutDash}`
-          this.duoShuoArticleTitle = this.title
-          this.duoShuoArticleId = getHashCode(this.title) + ''
-          this.duoShuoRunning = true
+          if (this.enableDuoShuo) {
+            this.duoShuoArticleTitle = this.title
+            this.duoShuoArticleId = getHashCode(this.title) + ''
+            this.duoShuoRunning = true
+          }
           this.question = question
           Object.keys(source).forEach((language) => {
             let cssClassOfLang = cssClassOfLangMap[language]

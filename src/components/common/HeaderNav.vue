@@ -127,7 +127,6 @@
     },
     methods: {
       focus () {
-        console.log('focus')
         this.inputing = true
       },
       blur () {
