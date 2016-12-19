@@ -1,0 +1,1 @@
+{"javascript":"/**\r\n * @param {string} s\r\n * @return {boolean}\r\n */\r\nvar isNumber = function(s) {\r\n    var reg = /^(-|\\+)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)(e(-|\\+)?[0-9]+)?$/;\r\n    s = s.trim();\r\n    return reg.test(s);\r\n};"}

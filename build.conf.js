@@ -19,7 +19,7 @@ module.exports = {
   language: 'en',
   // 是否开启多说插件 如果你开启此选项,请确保您已注册多说站点
   // 多说 是一个评论插件 可以为你的网站增加评论功能
-  duoShuoPlugin: false,
+  duoShuoPlugin: true,
   //请填写您自己的多说域名:
-  duoShuoShortName: 'your origin'
+  duoShuoShortName: 'chuckliu'
 }

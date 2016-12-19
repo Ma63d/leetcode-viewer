@@ -1,0 +1,1 @@
+{"java":"public class Solution {\r\n    public int singleNumber(int[] nums) {\r\n        int result=0; \r\n        for(int i=0;i<nums.length;i++) { \r\n            result ^= nums[i]; \r\n        } \r\n        return result;\r\n    }\r\n}"}

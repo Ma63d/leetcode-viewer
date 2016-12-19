@@ -1,0 +1,1 @@
+{"java":"public class Solution {\r\n    //噗哈哈哈 竟然真的这么简单\r\n    public int maxProfit(int[] prices) {\r\n        int profit = 0;\r\n        for(int i = 1; i < prices.length;i++){\r\n            if(prices[i] > prices[i-1]) profit += prices[i] - prices[i-1];\r\n        }\r\n        return profit;\r\n    }\r\n}"}

@@ -1,0 +1,1 @@
+{"java":"public class Solution {\r\n    public int removeDuplicates(int[] nums) {\r\n        if(nums.length < 2){\r\n            return nums.length;\r\n        }\r\n        int count = 0;\r\n        for(int i = 1; i < nums.length;i++){\r\n            if(nums[i] == nums[i-1]) continue;\r\n            nums[++count] = nums[i];\r\n        }\r\n        return count+1;\r\n    }\r\n}"}
