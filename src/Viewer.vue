@@ -9,6 +9,9 @@
         </keep-alive>
       </transition>
     </main>
+    <footer class="copyright">
+      powerd by <a href="https://github.com/Ma63d/leetcode-viewer" target="_blank">leetcode-viewer</a>
+    </footer>
   </div>
 </template>
 <style lang="stylus">
@@ -22,6 +25,12 @@
   .v-enter
     opacity 0
 
+  .copyright
+    color $light
+    font-size 1em
+    text-align center
+    padding 0 20px 30px
+    margin-top 30px
 </style>
 
 <script>
