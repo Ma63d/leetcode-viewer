@@ -1,3 +1,4 @@
+/* global Headers:false, fetch:false */
 function checkStatus (response) {
   if (response.status >= 200 && response.status < 300) {
     return response
@@ -17,7 +18,7 @@ function parseText (response) {
 
 export default {
   get (url, isJson = true, param = {}, headers = {}, host = process.env.sourcePath) {
-    headers = new window.Headers(headers)
+    headers = new Headers(headers)
     var query = []
     Object.keys(param).forEach((item) => {
       query.push(`${item}=${encodeURIComponent(param[item])}`)
@@ -30,11 +31,11 @@ export default {
       cache: 'default'
     }
     if (isJson) {
-      return window.fetch(url, init)
+      return fetch(url, init)
         .then(checkStatus)
         .then(parseJSON)
     } else {
-      return window.fetch(url, init)
+      return fetch(url, init)
         .then(checkStatus)
         .then(parseText)
     }
