@@ -1,4 +1,5 @@
 var path = require('path')
+var webpack = require('webpack')
 var config = require('../config/index')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
@@ -90,5 +91,11 @@ module.exports = {
         browsers: ['last 2 versions']
       })
     ]
-  }
+  },
+  plugins: [
+    //[fetch polyfill](https://github.com/github/fetch)
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    }),
+  ]
 }
