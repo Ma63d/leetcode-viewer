@@ -38,7 +38,7 @@ cd leetcode-viewer
 
 ```
 npm i
-npm i lc-spider -g 
+npm i leetcode-spider -g 
 ```
 然后按照lc-spider的使用方法 先爬下来你的leetcode解题源码 详见[leetcode-spider](https://github.com/Ma63d/leetcode-spider)使用介绍
 
