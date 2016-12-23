@@ -11,9 +11,14 @@
   .posts
     max-width 700px
     margin 0 auto
-  @media screen and (max-width: 1300px)
-    .posts
-      margin-left 280px
+    h1
+      margin 0 0 1em
+    @media screen and (max-width: 840px)
+      &
+        margin-left 0
+    @media screen and (max-width: 1400px) and (min-width:841px)
+      &
+       margin-left 280px
   .question
     margin 2em 0
     padding-left 20px

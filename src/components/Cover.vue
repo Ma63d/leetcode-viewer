@@ -1,5 +1,6 @@
 <template>
   <section class="cover" >
+    <side-bar :problems="problems"></side-bar>
     <div class="cover-inner">
       <img class="cover-pic" src="../assets/coding.png">
       <div class="cover-description">
@@ -30,6 +31,8 @@
     color $green
   .cover
     padding 100px 0
+    .sidebar
+      display none
     .cover-inner
       margin 0 auto
       max-width 800px
@@ -48,14 +51,25 @@
         line-height 1.5
       .light
         font-size 16px
+    @media screen and (max-width:840px)
+      &
+        padding 0
+        text-align center
+        .cover-inner
+          .cover-pic
+            float none
+        .sidebar
+          display block
 </style>
 <script>
   import PulseOutLoader from './common/PulseOutLoader.vue'
+  import SideBar from './common/SideBar.vue'
   import state from '../store/state'
   import service from '../services/cover/index'
   export default {
     components: {
-      PulseOutLoader
+      PulseOutLoader,
+      SideBar
     },
     data () {
       return {
@@ -65,7 +79,8 @@
         solved: '',
         locked: '',
         lastUpdatedTime: '',
-        loading: false
+        loading: false,
+        problems: {}
       }
     },
     activated () {
@@ -77,6 +92,7 @@
         this.solved = state.solved
         this.locked = state.locked
         this.lastUpdatedTime = state.lastUpdatedTime
+        this.problems = state.resultJson
       }
     },
     methods: {
@@ -92,6 +108,7 @@
           delete data.locked
           delete data.lastUpdatedTime
           state.resultJson = data
+          this.problems = state.resultJson
           this.loading = false
         })
       }

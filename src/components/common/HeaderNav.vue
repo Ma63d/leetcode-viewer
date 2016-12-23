@@ -11,7 +11,8 @@
         <li class="nav-link-item"><router-link class="nav-link" to="/source">{{language === 'en' ? `Source Code` : `源码`}}</router-link></li>
         <li class="nav-link-item" v-if="gitRepoUrl !== null"><a class="nav-link" target="_blank" :href="gitRepoUrl"><img src="../../assets/github.jpeg" class="github-logo">git repos</a></li>
       </ul>
-      <div class="search-container">
+      <img src="../../assets/menu.png" alt="" class="menu-button" @click="toggle">
+      <div class="search-container top">
         <input type="text" class="search" v-model="keywords" @focus="focus" @blur="blur"  :class="[inputing?'active':'']" />
         <ul class="result-list" v-show="searchResult.length > 0 && inputing">
           <li class="result-item" v-for="result in searchResult">
@@ -29,53 +30,64 @@
     width 100%
     top 0
     background #fff
-    z-index 1
+    z-index 100
     box-shadow 0 0 4px rgba(0,0,0,0.25)
   .top-nav
     height $header-height
-    padding $header-padding-ver 100px $header-padding-ver 60px
-    .search-container
-      float right
-      position relative
-      .search
-        height 30px
-        line-height 30px
-        box-sizing border-box
-        padding 0 15px 0 30px
-        border 1px solid #e3e3e3
-        color #2c3e50
-        outline none
-        border-radius 15px
-        margin-right 10px
-        margin-top 5px
-        transition border-color 0.2s ease
-        background #fff url(../../assets/search.png) 8px 5px no-repeat
-        background-size 20px
-        &.active
-          border-color $green
-      .result-list
-        position absolute
-        top 30px
-        left 0
-        list-style-type none
-        background-color #fff
-        border 1px solid #bbb
-        border-radius 4px
-        font-size 16px
-        margin 10px 0 0
-        padding 8px
-        text-align left
-        a
-          color $medium
-          &:hover
-            color $green
-      @media screen and (min-width: 720px)
+    padding $header-padding-vertical 100px $header-padding-vertical 60px
+    @media screen and (max-width:840px)
+      &
+        padding $header-padding-vertical-small 1.4em $header-padding-vertical-small 1.4em
+  .search-container
+    float right
+    position relative
+    @media screen and (max-width:840px)
+      &.top
+        display none
+    .search
+      height 30px
+      line-height 30px
+      box-sizing border-box
+      padding 0 15px 0 30px
+      border 1px solid #e3e3e3
+      color #2c3e50
+      outline none
+      border-radius 15px
+      margin-right 10px
+      margin-top 5px
+      transition border-color 0.2s ease
+      background #fff url(../../assets/search.png) 8px 5px no-repeat
+      background-size 20px
+      &.active
+        border-color $green
+    .result-list
+      position absolute
+      top 30px
+      left 0
+      list-style-type none
+      background-color #fff
+      border 1px solid #bbb
+      border-radius 4px
+      font-size 16px
+      margin 10px 0 0
+      padding 8px
+      text-align left
+    .result-item
+      a
+        color $medium
+        &:hover
+          color $green
+    @media screen and (min-width: 720px)
+      .top-nav
         .result-list
           width 300px
   .nav-logo
     display inline-block
     .logo
       margin-right 6px
+    @media screen and (max-width: 840px)
+      &
+        margin-left 10px
   .logo
     width 40px
     height 40px
@@ -84,19 +96,23 @@
     color $dark
     font-family $logo-font
     font-weight 500
-  /**
-    fixme! 留作以后的slogan样式
-  */
-  /*.slogan
-    font-size 1.3em
-    color $light
-    font-family $logo-font
-    font-weight 500*/
+  .menu-button
+    float right
+    width w = 24px
+    height h = w
+    margin-top (($header-height - h)/2)
+    margin-right 10px
+    @media screen and (min-width: 840px)
+      &
+        display none
   .nav-link-container
     float right
     list-style-type none
     margin 0
     padding 0
+    @media screen and (max-width: 840px)
+      &
+        display none
   .nav-link-item
     display inline-block
     margin 0 .6em
@@ -115,6 +131,7 @@
 <script>
   import _ from 'lodash'
   import state from '../../store/state'
+  import eventHub from '../../store/event_hub.js'
   export default{
     data () {
       return {
@@ -144,7 +161,10 @@
             this.searchResult = searchWithNumber(Number(this.keywords), state.resultJson)
           }
         }
-      }, 200)
+      }, 200),
+      toggle () {
+        eventHub.$emit('toggle')
+      }
     },
     watch: {
       'keywords': function () {
