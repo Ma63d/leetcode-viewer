@@ -18,8 +18,13 @@
   @import "./stylus/setting.styl"
   .main
     margin-top $header-total-height
-    padding 0 65px
+    padding 2em 65px 0
     min-height 500px
+    @media screen and (max-width:840px)
+      &
+        margin-top $header-total-height-small
+        padding-left 1.4em
+        padding-right 1.4em
   .v-enter-active
     transition opacity 1.2s
   .v-enter
