@@ -16,7 +16,7 @@
           <li class="nav-link-item" v-if="gitRepoUrl !== null"><a class="nav-link" target="_blank" :href="gitRepoUrl"><img src="../../assets/github.jpeg" class="github-logo">git repos</a></li>
         </ul>
         <ul class="question-links-container">
-          <li class="question-link" v-for="(value, key) in problems"><router-link :to="'/source/'+key">{{key}}.{{problems[key]['title']}}</router-link></li>
+          <li class="question-link" v-for="(value, key) in problems"><router-link :to="'/source/'+key" exact>{{key}}.{{problems[key]['title']}}</router-link></li>
         </ul>
       </nav>
     </aside>
