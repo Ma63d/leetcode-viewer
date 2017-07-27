@@ -150,6 +150,15 @@ npm run generate
 
 ok了,当前的网页呈现的是你的最新版代码.
 
+## 你还可以这么更新
+准备：
+* 首先新建你的题目托管分支`gh-pages`
+* 为目录下的`release.sh`赋予`777`权限
+* 在`solutions/`目录下创建`config.json`
+* `./release.sh`
+
+如果你使用github pages托管你的解题目录，你可以运行根目录下的`./release.sh`实现更新
+
 ## other 其他
 
 如果你不熟悉Javascript, 可能会对`npm run build`和`npm run generate`这两条命令有点疑惑,
